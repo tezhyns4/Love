@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Wallet - August & Tuch</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
+
+        body {
+            background-color: #ffe5ec; /* สีชมพูอ่อนๆ */
+            font-family: 'Kanit', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* กันสกอลบาร์ตอนฟรุ้งฟริ้งทำงาน */
+        }
+
+        #slip-card {
+            width: 320px;
+            background: white;
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header h2 {
+            color: #ff4d6d;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .header p { color: #888; font-size: 13px; margin: 5px 0; }
+
+        .dashed-line {
+            border-top: 1.5px dashed #eee;
+            margin: 15px 0;
+        }
+
+        .status-icon {
+            background: #2ecc71;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 20px;
+        }
+
+        .main-text { font-weight: 600; font-size: 20px; margin-bottom: 20px; }
+
+        .details { text-align: left; font-size: 14px; }
+
+        .row { display: flex; justify-content: space-between; margin-bottom: 10px; color: #555; }
+
+        .val { color: #000; font-weight: 500; }
+
+        .highlight { color: #ff4d6d; font-weight: 600; }
+
+        .footer-note {
+            margin-top: 25px;
+            font-size: 10px;
+            color: #ccc;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body onclick="launchConfetti()">
+
+    <div id="slip-card">
+        <div class="header">
+            <h2>❤️ Love Wallet</h2>
+            <p>โอนความรักสำเร็จ</p>
+        </div>
+
+        <div class="dashed-line"></div>
+
+        <div class="status-icon">✓</div>
+        <div class="main-text">เย้! เป็นแฟนกันแล้ว</div>
+
+        <div class="details">
+            <div class="row">
+                <span>วันที่ทำรายการ:</span>
+                <span class="val">1/2/2026 00:05:53</span> </div>
+            <div class="row">
+                <span>ผู้รับ:</span>
+                <span class="val">tuch</span>
+            </div>
+            <div class="row">
+                <span>ผู้ส่ง:</span>
+                <span class="val">august</span>
+            </div>
+            <div class="row">
+                <span>จำนวน:</span>
+                <span class="val highlight">รักอ้วนทั้งใจ</span>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            Ref: LOVE-FOREVER-2026<br>
+            *แคปหน้าจอนี้ไว้เป็นหลักฐานความรัก*
+        </div>
+    </div>
+
+    <script>
+        // ฟังก์ชันทำให้ฟรุ้งฟริ้งพุ่ง
+        function launchConfetti() {
+            var count = 200;
+            var defaults = { origin: { y: 0.7 } };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
+            }
+
+            fire(0.25, { spread: 26, startVelocity: 55, });
+            fire(0.2, { spread: 60, });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 45, });
+        }
+
+        // ให้พุ่งทันทีที่โหลดหน้าเว็บเสร็จ
+        window.onload = function() {
+            setTimeout(launchConfetti, 500);
+        };
+    </script>
+</body>
+</html>
